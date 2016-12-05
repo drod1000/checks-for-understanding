@@ -5,30 +5,78 @@ Fork this respository. Answer the questions to the best of your ability. Try to 
 Note: When you're done, submit a PR. 
 
 1. List the five common HTTP verbs and what the purpose is of each verb.
+  GET - get an existing page
+  POST - create a new page
+  PUT - update an existing page
+  DELETE - delete a page
+  
 2. What is Sinatra?
-4. What is MVC?
-5. Why do we follow conventions when creating our actions/path names in our Sinatra routes?
-6. What types of variables are accessible in our view templates without explicitly passing them?
-7. Given the following block of code, how would I pass an instance variable `count` with a value of `1` to my `index.erb` template?
+  A Domain Specific language
+
+3. What is MVC?
+  MVC stands for Models, Views, and Controller. It is a convention commonly used to organize folders when developing web applications
+  
+4. Why do we follow conventions when creating our actions/path names in our Sinatra routes?
+  Following conventions makes it easier for the user to guess what a particular change in the path will do and it allows other        developers to have a good idea of what our code does even it they've never seen it before.
+  
+5. What types of variables are accessible in our view templates without explicitly passing them?
+  Instance Variables
+
+6. Given the following block of code, how would I pass an instance variable `count` with a value of `1` to my `index.erb` template?
   
   ```ruby
   get '/horses' do
     erb :index
   end
   ```
+  @count = 1
 
-8. In the same code block, how would I pass a local variable `name` with a value of `Mr. Ed`?
-9. What's the purpose of ERB?
-10. Why do I need a development AND test database?
-11. What's responsive design?
-12. What is CRUD and why is it important?
-13. What does HTTP stand for? 
-14. What are the two ways to interpolate Ruby in an ERB view template? What's the difference between these two ways?
-15. What's an ORM?
-16. What's the most commonly used ORM?
-17. Let's say we have an application with restaurants. There are seven verb + path combinations necessary to provide full CRUD functionality for our restaurant application. List each of the seven combinations, and explain what each is for.
-18. What's a migration? 
-19. When you create a migration, does it automatically modify your database?
-20. How does a model relate to a database?
-21. What's the difference between agile workflow and waterfall method?
-22. What is the difference between `#new` and `#create`?
+7. In the same code block, how would I pass a local variable `name` with a value of `Mr. Ed`?
+  :locals => {name => 'Mr. Ed'}
+  
+8. What's the purpose of ERB?
+  It allows us to ouput pure html when using ruby
+
+9. Why do I need a development AND test database?
+  We want separate databases because we don't want to accidentally make changes to the development database while we're testing.
+
+10. What's responsive design?
+
+11. What is CRUD and why is it important?
+  CRUD stands for Create, Read, Update, and Delete. It's important because any database must have these four basic functions available to user so that they may interact with it.
+  
+12. What does HTTP stand for? 
+  Hyper Text Transfer Protocol
+  
+13. What are the two ways to interpolate Ruby in an ERB view template? What's the difference between these two ways?
+  <% value %> and <%= value %>, the latter will output the value to the screen while the first one will only be available to perform calculations
+  
+14. What's an ORM?
+  Object Relational Mapping
+
+15. What's the most commonly used ORM?
+  Postgres?
+
+16. Let's say we have an application with restaurants. There are seven verb + path combinations necessary to provide full CRUD functionality for our restaurant application. List each of the seven combinations, and explain what each is for.
+  GET + '/restaurants' = see page with all restaurants
+  GET + '/restaurants/id' = see page for one restaurant
+  GET + '/restaurants/new' = see page to create a new restaurant
+  GET + '/restaurants/edit' = see page to update a restaurant
+  POST + '/restaurants' = send request to create a new restaurant
+  PUT + '/restaurants/id' = send request to update a restaurant
+  DELETE + '/restaurants/id' = delete a restaurant
+
+17. What's a migration? 
+  A migration allows us communicate with our database to tell it what our tables should look like
+
+18. When you create a migration, does it automatically modify your database?
+  No
+
+19. How does a model relate to a database?
+ Each row in a database contains the attributes associated with a model
+
+20. What's the difference between agile workflow and waterfall method?
+  The waterfall method is made up of bigger steps that must be performed in order while agile makes it easier to break those step up so that they can be worked on at the same time.
+
+21. What is the difference between `#new` and `#create`?
+  new creates an instance of a model and create goes a step further and saves it to the database.
