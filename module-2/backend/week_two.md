@@ -5,6 +5,8 @@ Fork this respository. Answer the questions to the best of your ability. Try to 
 Note: When you're done, submit a PR. 
 
 1. At a high level, what is ActiveRecord? What does it do/allow you to do?
+ActiveRecord allow us to query our database by calling Ruby methods that are wrapped around SQL statements
+
 2. Assume you have the following model:
 
 ```ruby
@@ -13,8 +15,13 @@ end
 ```
 
 What are some methods you can call on `Team`? If these methods aren't defined in the class, how do you have access to them?
+all,count, etc.: Team has access to any methods available to ActiveRecord because it inherits from it
 
 3. Assume that in your database, a team has the following attributes: "id", "name", owner_id". How would you find the name of a team with an id of 4? Assuming your class only included the code from question 2, how could you find the owner of the same team?
+Team name: Team.find(4).name
+Owner name: Owner.find(Team.find(4).owner_id).name 
+
+
 
 4. Assume that you added a line to your `Team` class as follows:
 
@@ -25,14 +32,24 @@ end
 ```
 
 Now how would you find the owner of the team with an id of 4?
+Owner name: Team.find(4).owner.name
 
 3. What do they allow you to do?
+???
 7. In a database that's holding students and teachers, what will be the relationship between students and teachers? Draw the schema diagram.
+Assuming there is only one teacher a teacher has many students
 8. Define foreign key, primary key, and schema.
-9. Describe the relationship between a foreign key on one table and a primary key on another table.
-10. What are the parts of an HTTP response?
-11. Describe some techniques to make our Sinatra code more DRY. Give an example of when you would use these techniques.
+Foreign Key: teacher_id (student table)
+Primary Key: id (teacher table)
+Teacher Table: id, name
+Student Table: id, name, teacher_id
 
+9. Describe the relationship between a foreign key on one table and a primary key on another table.
+This is the key that connects two tables in a one to many relationship. The primary key is on the one side and the foreign key is on the many side.
+10. What are the parts of an HTTP response?
+Verb, Path, Protocol, Parameters
+11. Describe some techniques to make our Sinatra code more DRY. Give an example of when you would use these techniques.
+We can make sure to build relationships if there are any. This would help clean up some of our code if we're going to be querying our database repeatedly. Also, if we keep adding extra tables to our database we can build those connections so that we only have to call a single method. For example, if we had many teachers, students, and classes we'd only have to call teacher.students to get all students that teacher has.
 
 ### Optional Questions
 
